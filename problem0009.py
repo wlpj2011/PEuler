@@ -1,7 +1,6 @@
 import sys
 
 def solution(n):
-    print(n)
     for i in range(1,n+1):
         for j in range(1,n+1-i):
             k = n-i-j
