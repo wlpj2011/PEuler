@@ -16,3 +16,11 @@ def isPrime(n):
         if n%i==0:
             return False
     return True
+
+def isPalin(n):
+    n = str(n)
+    k = len(n)
+    for i in range(k//2):
+        if n[i]!=n[k-i-1]:
+            return False
+    return True
