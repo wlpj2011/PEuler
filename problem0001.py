@@ -10,4 +10,4 @@ def solution(n):
 
 if __name__ == "__main__":
     n = int(sys.argv[1])
-    print(solution(n))
+    print("The solution is : "+ str(solution(n)))
