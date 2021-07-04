@@ -24,3 +24,23 @@ def isPalin(n):
         if n[i]!=n[k-i-1]:
             return False
     return True
+
+def sumnPowk(n,k):
+    if k == 1:
+        return n*(n+1)//2
+    elif k == 2:
+        return n*(n+1)*(2*n+1)//6
+    elif k == 3:
+        return math.pow(sumnPowk(n,2),2)
+    else:
+        sum = 0
+        for i in range(n+1):
+            sum += math.pow(i,k)
+        return sum
+
+def factors(n):
+    result = []
+    for i in range(1,n+1):
+        if n%i==0:
+            result.append(i)
+    return result
