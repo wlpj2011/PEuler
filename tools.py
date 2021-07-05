@@ -64,3 +64,10 @@ def collatz(n):
         return n//2
     else:
         return 3*n+1
+    
+def digitSum(n):
+    m = str(n)
+    sum = 0
+    for i in range(len(m)):
+        sum += int(m[i])
+    return sum
