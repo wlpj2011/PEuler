@@ -44,3 +44,23 @@ def factors(n):
         if n%i==0:
             result.append(i)
     return result
+
+def primeFactors(n):
+    result = []
+    while n > 1:
+        count = -1
+        for i in range(2,n+1):
+            if isPrime(i):
+                count += 1
+                if n%i==0:
+                    while count > len(result)-1:
+                        result.append(0)
+                    result[count]+=1
+                    n = n//i
+    return result
+
+def collatz(n):
+    if n%2 == 0:
+        return n//2
+    else:
+        return 3*n+1
