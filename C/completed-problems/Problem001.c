@@ -20,11 +20,12 @@ int main(int argc, char *argv[]){
 }
 
 int sol_P001(int n){
+    // Computes the sum of numbers less than n that are divisible by at least one of 3 and 5
     int result = 0;
     for (int i = 0; i < n; i++){
         if((i%3==0) || (i%5 == 0)){
             result += i;
         }
     }
-        return result;
+    return result;
 }
