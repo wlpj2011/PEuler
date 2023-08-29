@@ -1,3 +1,4 @@
 .py~
 .pcy
 __pycache__/
+*.exe
