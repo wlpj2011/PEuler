@@ -6,6 +6,7 @@
 
 int sol_P007(int n);
 
+bool is_prime(int n);
 
 int main(int argc, char *argv[]){
     if(argc != 2){
@@ -25,7 +26,32 @@ int main(int argc, char *argv[]){
 int sol_P007(int n){
     // Finds the nth prime number
     int result = 0;
-
-    
+    int numPrimes = 0;
+    int i = 0;
+    while (numPrimes < n+1)
+    {
+        if(is_prime(i)){
+            result = i;
+            numPrimes += 1;
+        }
+        i+=1;
+    }
+    result = i-1;
     return result;
+}
+
+bool is_prime(int n){
+    // returns true if n is prime and false otherwise
+    if(n == 1){
+        return false;
+    }
+    for (int i = 2; i < (int) ceil(sqrt((double)n))+1; i++){
+        if(n == i){
+            return true;
+        }
+        if(n % i == 0){
+            return false;
+        }
+    }
+    return true;
 }
