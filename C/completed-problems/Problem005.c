@@ -4,9 +4,9 @@
 #include <math.h>
 #include <time.h>
 
-long sol_P003(long n);
+int sol_P005(int n);
 
-bool is_primel(long n);
+bool is_prime(int n);
 
 int main(int argc, char *argv[]){
     if(argc != 2){
@@ -17,33 +17,30 @@ int main(int argc, char *argv[]){
     double cpu_time_used;
     long n = atol(argv[1]);
     start = clock();
-    int solution = sol_P003(n);
+    int solution = sol_P005(n);
     end = clock();
     printf("The solution to %s is %i which took %f seconds to compute.\n", argv[0], solution, ((double) (end - start))/CLOCKS_PER_SEC);
     exit(0);
 }
 
-long sol_P003(long n){
-    // Computes the largest prime factor of n
-    long result = 0;
+int sol_P005(int n){
+    // Computes the smallest number evenly divisible by all 0 ≤ i ≤ n
+    int result = 1;
 
-    for (long i = 2; i < n+1; i ++){
-        if((n%i == 0)&&(is_primel(i))){
-            result = i;
-            n /= i;
-            printf("%li\n", result);
+    for (int i = 2; i < n + 1; i++){
+        if(is_prime(i)){
+            result *= (int)powf((float)i, floorf(logf((float)n) / logf((float)i)));
         }
     }
 
-        return result;
+    return result;
 }
-
-bool is_primel(long n){
+bool is_prime(int n){
     // returns true if n is prime and false otherwise
     if(n == 1){
         return false;
     }
-    for (long i = 2; i < (long) ceil(sqrt((double)n))+1; i++){
+    for (int i = 2; i < (int) ceil(sqrt((double)n))+1; i++){
         if(n == i){
             return true;
         }
