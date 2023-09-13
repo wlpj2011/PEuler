@@ -26,7 +26,12 @@ int sol_P006(int n){
     // Computes the difference between the sum of the first n squares and the square of the sum of the first n numbers
     int result = 0;
 
-    
-
+    int sumofsquares = 0;
+    int sum = 0;
+    for (int i = 0; i < n + 1; i++){
+        sumofsquares += i * i;
+        sum += i;
+    }
+    result = sum * sum - sumofsquares;
     return result;
 }
