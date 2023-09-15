@@ -24,7 +24,18 @@ int main(int argc, char *argv[]){
 int sol_P009(int n){
     // Finds the product of a pythagorean triple with sum n
     int result = 0;
-    
+
+    int k = 0;
+    for (int i = 1; i < n + 1; i++)
+    {
+        for (int j = 1; j < n + 1 - i; j++){
+            k = n - i - j;
+            if(i*i + j*j == k*k){
+                result = i * j * k;
+            }
+        }
+    }
+
     return result;
 }
 
