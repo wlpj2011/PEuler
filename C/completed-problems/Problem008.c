@@ -36,7 +36,7 @@ long sol_P007(int n, int length){
         exit(1);
     }
 
-    char *digits = malloc(length * sizeof(char));
+    char digits[length];
 
     rewind(fptr);
     fread(digits, sizeof(char), length, fptr);
@@ -53,7 +53,6 @@ long sol_P007(int n, int length){
         }
     }
 
-    free(digits);
     fclose(fptr);
 
     return result;
