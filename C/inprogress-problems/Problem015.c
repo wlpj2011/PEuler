@@ -4,7 +4,8 @@
 #include <math.h>
 #include <time.h>
 
-int sol_P014(int n);
+int sol_P015(int n);
+
 
 int main(int argc, char *argv[]){
     if(argc != 2){
@@ -15,17 +16,15 @@ int main(int argc, char *argv[]){
     double cpu_time_used;
     int n = atoi(argv[1]);
     start = clock();
-    int solution = sol_P014(n);
+    int solution = sol_P015(n);
     end = clock();
     printf("The solution to %s is %i which took %f seconds to compute.\n", argv[0], solution, ((double) (end - start))/CLOCKS_PER_SEC);
     exit(0);
 }
 
-int sol_P014(int n){
-    // Finds the longest chain produced by the Collatz map that has a seed < n
+int sol_P015(int n){
+    // Finds the number of paths moving only down and right from the top left to the bottom right of an n x n grid.
     int result = 0;
-
-
+    
     return result;
 }
-
