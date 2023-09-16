@@ -25,7 +25,19 @@ int sol_P012(int n){
     // Finds the first triangular number with more than n divisors.
     int result = 0;
 
-    
+    int num_divisors = 0;
+    int i = 1;
+    while (num_divisors < n+1)
+    {
+        result += i;
+        num_divisors = 0;
+        for (int j = 0; j < result + 1; j++){
+            if((result % j) == 0){
+                num_divisors += 1;
+            }
+        }
+        i++;
+    }
 
     return result;
 }
