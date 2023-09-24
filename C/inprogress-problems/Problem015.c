@@ -3,10 +3,11 @@
 #include <stdbool.h>
 #include <math.h>
 #include <time.h>
+#include <inttypes.h>
 
 long sol_P015(int n);
 
-long binom(int n, int k);
+unsigned long center_binom(int n);
 
 int main(int argc, char *argv[]){
     if(argc != 2){
@@ -19,35 +20,32 @@ int main(int argc, char *argv[]){
     start = clock();
     long solution = sol_P015(n);
     end = clock();
-    printf("The solution to %s is %li which took %f seconds to compute.\n", argv[0], solution, ((double) (end - start))/CLOCKS_PER_SEC);
+    printf("The solution to %s is %lu which took %f seconds to compute.\n", argv[0], solution, ((double) (end - start))/CLOCKS_PER_SEC);
     exit(0);
 }
 
 long sol_P015(int n){
     // Finds the number of paths moving only down and right from the top left to the bottom right of an n x n grid.
     long result = 0;
-    result = binom(2*n, n);
+    result = center_binom(n);
     return result;
 }
 
-long binom(int n, int k){
+unsigned long center_binom(int n){
     // Computer n choose k i.e. n!/((n-k)!k!)
-    if(k > n){
+    int k = n/2;
+    if (k > n)
+    {
         return 0;
     }
     if((k==0) || (k == n)){
         return 1;
     }
     unsigned long result = 1;
-    for (long i = k+1; i < n+1; i++)
+    for (unsigned long i = 1; i < n+1; i++)
     {
-        result *=  i;
-    }
-    for (long i = 1; i < n - k + 1; i++)
-    {
+        result *=  (n+i);
         result /= i;
     }
-    printf("%li\n", result);
-    printf("%lu\n", sizeof(long long));
     return result;
 }
