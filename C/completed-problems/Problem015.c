@@ -9,6 +9,8 @@ long sol_P015(int n);
 
 unsigned long center_binom(int n);
 
+long binom_recurse(int n, int k);
+
 int main(int argc, char *argv[]){
     if(argc != 2){
         printf("Usage: %s int n\n", argv[0]);
@@ -27,7 +29,8 @@ int main(int argc, char *argv[]){
 long sol_P015(int n){
     // Finds the number of paths moving only down and right from the top left to the bottom right of an n x n grid.
     long result = 0;
-    result = center_binom(n);
+    // result = center_binom(n);
+    result = binom_recurse(2*n, n);
     return result;
 }
 
@@ -48,4 +51,15 @@ unsigned long center_binom(int n){
         result /= i;
     }
     return result;
+}
+
+long binom_recurse(int n, int k){
+    if (k > n)
+    {
+        return 0;
+    }
+    if((k==0) || (k == n)){
+        return 1;
+    }
+    return binom_recurse(n - 1, k) + binom_recurse(n - 1, k - 1);
 }
