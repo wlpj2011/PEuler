@@ -35,7 +35,7 @@ long sol_P015(int n){
 }
 
 unsigned long center_binom(int n){
-    // Computer n choose k i.e. n!/((n-k)!k!)
+    // Computer n choose k i.e. n!/((n-k)!k!), This takes 0.000004 seconds for n = 20
     int k = n/2;
     if (k > n)
     {
@@ -54,6 +54,7 @@ unsigned long center_binom(int n){
 }
 
 long binom_recurse(int n, int k){
+    //Note this version takes 10 minutes using recursion for n = 40, k = 20
     if (k > n)
     {
         return 0;
