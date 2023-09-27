@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
 }
 
 int sol_P018(int n){
-    // Finds the number of letters used to write out all the numbers from 1 to n
+    // Finds that largest sum of a path from top to bottom in the triangle in Problem018.txt
     int result = 0;
     FILE *fptr;
 
@@ -35,27 +35,45 @@ int sol_P018(int n){
     }
     rewind(fptr);
 
-    int *digits[n];
+    int *digits[n]; //Create structure to hold the digits
     for (int i = 0; i < n; i ++){
         digits[i] = malloc((i + 1) * sizeof(int));
     }
 
-
-    fclose(fptr);
     for (int i = 0; i < n; i ++){
-        for (int j = 0; j < i; j++){
+        for (int j = 0; j < i+1; j++){
             fscanf(fptr, "%2d", &digits[i][j]);
         }
     }
 
-    for (int i = 0; i < n; i ++){
-        for (int j = 0; j < i; j++){
-            printf("%2d ", digits[i][j]);
+    fclose(fptr);
+
+    int tempresult = 0;
+    int path = 0;
+    int currentposition = 0;
+    for (int i = 0; i < (1 << (n-1)); i++)
+    {
+        path = i;
+        tempresult = digits[0][0];
+        currentposition = 0;
+
+        for (int j = 0; j < n-1; j++){
+            if(path % 2){
+                currentposition++;
+                tempresult += digits[j + 1][currentposition];
+            }
+            else
+            {
+                tempresult += digits[j + 1][currentposition];
+            }
+            path = (path >> 1);
         }
-        printf("\n");
+        if(tempresult > result){
+            result = tempresult;
+        }
     }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) //Free the memory of the structure holding the digits
     {
         free(digits[i]);
     }
