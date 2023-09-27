@@ -29,61 +29,62 @@ int sol_P019(int n){
     int result = 0;
 
     int numberofdaysinmonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    int dayoftheweek = 0;
-    int dayofthemonth = 0;
+    int dayoftheweek = 1;
+    int dayofthemonth = -1;
     int monthoftheyear = 0;
     for (int i = 1901; i < 2001; i++)
     {
         monthoftheyear = 0;
-        dayofthemonth = 0;
+        dayofthemonth = -1;
         if (is_leap_year(i))
         {
             for (int day = 0; day < 366; day++){
-
-                if((dayofthemonth == 1) && (dayoftheweek == 6)){
-                    result += 1;
-                }
-
                 dayoftheweek++;
                 if (dayoftheweek == 7)
                 {
                     dayoftheweek = 0;
                 }
                 dayofthemonth++;
-                if (dayofthemonth == numberofdaysinmonth[monthoftheyear]){
+                if (((dayofthemonth == numberofdaysinmonth[monthoftheyear]) &&( monthoftheyear != 1) )|| ((dayofthemonth == 29) && (monthoftheyear == 1)))
+                {
                     monthoftheyear++;
                     dayofthemonth = 0;
                 }
+                if((dayofthemonth == 0) && (dayoftheweek == 0))
+                {
+                    result += 1;
+                }
+                
             }
         }
         else{
             for (int day = 0; day < 365; day++){
-                if((dayofthemonth == 1) && (dayoftheweek == 6)){
-                    result += 1;
-                }
-
                 dayoftheweek++;
                 if (dayoftheweek == 7)
                 {
                     dayoftheweek = 0;
                 }
                 dayofthemonth++;
-                if (((dayofthemonth == numberofdaysinmonth[monthoftheyear]) &&( monthoftheyear != 2) )|| (dayofthemonth == 29)){
+                if (dayofthemonth == numberofdaysinmonth[monthoftheyear])
+                {
                     monthoftheyear++;
                     dayofthemonth = 0;
                 }
+                if((dayofthemonth == 0) && (dayoftheweek == 0))
+                {
+                    result += 1;
+                }
             }
         }
-
     }
 
     return result;
 }
 
 bool is_leap_year(int n){
-    if(n % 4){
-        if(n % 100){
-            if(n%400){
+    if((n % 4) == 0){
+        if((n % 100) == 0){
+            if((n%400) == 0){
                 return true;
             }
             return false;
