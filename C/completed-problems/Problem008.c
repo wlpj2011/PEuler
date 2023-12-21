@@ -29,7 +29,7 @@ long sol_P007(int n, int length){
 
     long result = 1;
 
-    fptr = fopen("/Users/William/Desktop/PEuler/TextInputs/Problem008.txt","r");
+    fptr = fopen("/Users/William/PEuler/TextInputs/Problem008.txt","r");
 
     if(fptr == NULL) {
         printf("Not able to open Problem008.txt.\n");
