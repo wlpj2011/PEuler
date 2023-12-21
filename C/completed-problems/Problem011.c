@@ -28,7 +28,7 @@ int sol_P011(int n, int length){
     
     int result = 0;
 
-    fptr = fopen("~/PEuler/TextInputs/Problem011.txt","r");
+    fptr = fopen("/Users/William/Desktop/PEuler/TextInputs/Problem011.txt","r");
     if(fptr == NULL) {
         printf("Not able to open Problem011.txt.\n");
         exit(1);
