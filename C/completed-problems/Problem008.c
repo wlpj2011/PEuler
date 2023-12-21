@@ -4,7 +4,7 @@
 #include <math.h>
 #include <time.h>
 
-long sol_P007(int n, int length);
+long sol_P008(int n, int length);
 
 
 int main(int argc, char *argv[]){
@@ -17,19 +17,19 @@ int main(int argc, char *argv[]){
     int n = atoi(argv[1]);
     int length = atoi(argv[2]);
     start = clock();
-    long solution = sol_P007(n,length);
+    long solution = sol_P008(n,length);
     end = clock();
     printf("The solution to %s is %li which took %f seconds to compute.\n", argv[0], solution, ((double) (end - start))/CLOCKS_PER_SEC);
     exit(0);
 }
 
-long sol_P007(int n, int length){
+long sol_P008(int n, int length){
     // Finds the greatest product of n adjacent digits out of the first length digits in the file. Give an error if length is too long.
     FILE *fptr;
 
     long result = 1;
 
-    fptr = fopen("/Users/William/Desktop/PEuler/TextInputs/Problem008.txt","r");
+    fptr = fopen("~/PEuler/TextInputs/Problem008.txt","r");
 
     if(fptr == NULL) {
         printf("Not able to open Problem008.txt.\n");

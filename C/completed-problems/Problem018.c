@@ -27,7 +27,7 @@ int sol_P018(int n){
     int result = 0;
     FILE *fptr;
 
-    fptr = fopen("/Users/William/Desktop/PEuler/TextInputs/Problem018.txt","r");
+    fptr = fopen("~/PEuler/TextInputs/Problem018.txt","r");
 
     if(fptr == NULL) {
         printf("Not able to open Problem018.txt.\n");
