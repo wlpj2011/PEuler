@@ -1,6 +1,5 @@
 use std::io;
 
-
 fn main() {
     loop {
         println!("Please input your Fibonacci number upper bound.");
@@ -28,9 +27,7 @@ fn fibonacci_sum_even(upper_bound: u32) -> u32 {
         let current_fib_num = fibonacci(i);
         if current_fib_num > upper_bound {
             break;
-        }
-        else if current_fib_num % 2 == 0
-        {
+        } else if current_fib_num % 2 == 0 {
             sum += current_fib_num;
         }
         i += 1;
@@ -38,15 +35,13 @@ fn fibonacci_sum_even(upper_bound: u32) -> u32 {
     sum
 }
 
-fn fibonacci(n : u32) -> u32 {
+fn fibonacci(n: u32) -> u32 {
     //Only works up to 42nd Fibonacci number. i.e. for n ≤ 42.
     if n == 0 {
         return 0;
-    }
-    else if n == 1 {
+    } else if n == 1 {
         return 1;
-    }
-    else {
+    } else {
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 }
