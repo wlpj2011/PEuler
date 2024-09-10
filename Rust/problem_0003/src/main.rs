@@ -10,7 +10,7 @@ fn main() {
             .read_line(&mut number)
             .expect("Failed to read line");
 
-        let number: u32 = match number.trim().parse() {
+        let number: u64 = match number.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
@@ -21,14 +21,18 @@ fn main() {
     }
 }
 
-fn prime_factors(number: u32) -> Vec<u32> {
+fn prime_factors(number: u64) -> Vec<u64> {
     let mut factors = Vec::new();
-
+    for i in  2..((number as f64).sqrt() as u64) {
+        if is_prime(i) && (number % i == 0) {
+            factors.push(i);
+        }
+    }
     factors
 }
 
-fn is_prime(number: u32) -> bool {
-    for i in 2..number {
+fn is_prime(number: u64) -> bool {
+    for i in 2..((number as f64).sqrt() as u64) {
         if number % i == 0 {
             return false;
         }
