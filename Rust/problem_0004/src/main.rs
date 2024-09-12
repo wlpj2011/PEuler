@@ -24,6 +24,15 @@ fn main() {
 
 fn is_palindrome(number: u32) -> bool {
     let num_digits = ((number as f32) + 0.1).log10().ceil() as u32;
+    let number_string = number.to_string();
+    for i in 0..num_digits {
+        if num_digits % 2 == 1 && i == (num_digits  - 1)/ 2 {
+            return true;
+        }
+        if number_string[i as usize] != number_string[num_digits as usize - i as usize- (1 as usize)] {
+            return false;
+        }
+    }
     true 
 }
 
